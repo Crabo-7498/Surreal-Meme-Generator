@@ -7,6 +7,8 @@ import java.awt.image.BufferedImage;
 
 public class ImageEditor {
     private Graphics2D g2d = null;
+    private ImageLoader imgLoad;
+
     public ImageEditor(Graphics2D g2d) {
         this.g2d = g2d;
     }
@@ -19,8 +21,10 @@ public class ImageEditor {
         g2d.drawImage(image, position.x, position.y, size.x, size.y, null);
     }
 
-    public void AddText(String text, Tuple<String, Float> font, Tuple<Integer, Integer> position) {
+    public void AddText(BufferedImage bg, String text, Tuple<String, Float> font, Tuple<Integer, Integer> position) {
+        imgLoad = new ImageLoader();
         FontLoader fl = new FontLoader();
+        g2d.setColor(imgLoad.GetDefaultImageColor(bg, position, new Tuple<Float, Float>(text.length() * font.y / 1.8f, font.y)));
         g2d.setFont(fl.LoadFont(font.x).deriveFont(font.y));
         g2d.drawString(text, position.x, position.y);
     }
