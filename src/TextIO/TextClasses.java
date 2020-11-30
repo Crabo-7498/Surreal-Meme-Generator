@@ -8,4 +8,5 @@ public enum TextClasses {
     Insect,
     Moneky,
     Snake,
+    None
 }

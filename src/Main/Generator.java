@@ -21,7 +21,7 @@ public class Generator {
 
         TextParser tParser = new TextParser();
         try {
-            tParser.ParseText(TextClasses.Fish, "Nouns");
+            System.out.println(tParser.RandomWord(TextClasses.None, "Nouns"));
         } catch (Exception e) {
             e.printStackTrace();
         }
