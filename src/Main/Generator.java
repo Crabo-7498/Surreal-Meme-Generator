@@ -4,27 +4,21 @@ import ResourceIO.*;
 import TextIO.TextClasses;
 import TextIO.TextParser;
 import Util.Tuple;
-
-import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Generator {
     public void Generate() {
-        /* Init */
         ImageLoader imgLoad = new ImageLoader();
         BufferedImage bg = imgLoad.LoadImage("t5.jpg");
-        BufferedImage image;
-        Graphics2D g2d = bg.createGraphics();
-        ImageEditor imgEdit = new ImageEditor(g2d);
+        ImageEditor imgEdit = new ImageEditor(bg);
         TextParser tParser = new TextParser();
 
-        imgEdit.SetBackgroundSize(new Tuple<>(bg.getWidth(), bg.getHeight()));
-
-        /* Editing */
         try {
             imgEdit.AddImage(imgLoad.LoadImage("t2.jpg"), new Tuple<Integer, Integer>(500, 500), new Tuple<Integer, Integer>(10, 10));
-            imgEdit.AddText(bg, tParser.RandomWord(TextClasses.None, "Nouns"), new Tuple<String, Float>("mn.ttf", 60f), new Tuple<Integer, Integer>(100, 300));
-            imgLoad.SaveImage("Export.png", bg, new Tuple<Integer, Integer>(512, 512));
+            //imgEdit.AddImage(imgLoad.LoadImage("t6.jpg"), new Tuple<Integer, Integer>(500, 500), new Tuple<Integer, Integer>(70, 70));
+            //imgEdit.AddText(bg, tParser.RandomWord(TextClasses.None, "Nouns"), new Tuple<String, Float>("mn.ttf", 60f), new Tuple<Integer, Integer>(100, 300));
+            //imgEdit.AddText(bg, tParser.RandomWord(TextClasses.None, "Nouns"), new Tuple<String, Float>("mn.ttf", 1000f), new Tuple<Integer, Integer>(500, 700));
+            imgLoad.SaveImage("Export.png", bg);
         } catch (Exception e) {
             e.printStackTrace();
         }
