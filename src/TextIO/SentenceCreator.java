@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 /**
  * The SentenceCreator class creates sentences based on a SentenceStructure
@@ -13,6 +14,7 @@ import java.util.List;
  */
 public class SentenceCreator {
     BufferedReader bReader;
+    final Random r = new Random();
 
     /**
      * Create a sentence
@@ -31,14 +33,17 @@ public class SentenceCreator {
 
             // Iterates through each of the structs
             for(String word : wordStruct) {
-                if(word.startsWith("<W>:")) {
-                    sentence.append(word.split(":")[1]);
-                } else if(word.contains("::")) {
-                    sentence.append(tParser.RandomWord(word.split("::")[1], word.split("::")[0]));
-                } else {
-                    sentence.append(tParser.RandomWord("None", word));
+                if(word.startsWith("<!W>::")) {
+                    sentence.append(word.split("::")[1] + " ");
+                } else if(word.startsWith("<!S>::")) {
+                    sentence.append(tParser.RandomWord(word.split("::")[1], word.split("::")[2]) + " ");
+                } else if(word.startsWith("<?O>")) {
+                    if(Math.random() > 0.5) sentence.append(tParser.RandomWord("None", word.split("::")[1]) + " ");
+                } else if(word.startsWith("<$")) {
+                    sentence.deleteCharAt(sentence.length() - 1).append(word.charAt(2)).append(" ");
+                }else {
+                    sentence.append(tParser.RandomWord("None", word) + " ");
                 }
-                sentence.append(" ");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -59,10 +64,12 @@ public class SentenceCreator {
 
         // Iterate through the file
         while((line = bReader.readLine()) != null) {
+            if(line.startsWith("//") || line.isEmpty()) continue;
             wordStruct.add(line);
         }
 
+        //System.out.println(r.nextInt(wordStruct.size()));
         // Return a random SentenceStructure from the ArrayList
-        return wordStruct.get((int) (Math.random() * wordStruct.size() - 1)).split(", ");
+        return wordStruct.get(r.nextInt(wordStruct.size())).split(", ");
     }
 }

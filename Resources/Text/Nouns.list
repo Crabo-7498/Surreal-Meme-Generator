@@ -1,3 +1,5 @@
+// Comments are ignored
+
 Body parts:: arm,foot,hand,heart,leg,kidney
 Fruits:: apple,banana,beans,brogle,orange,pineapple,vegetal
 Bird:: albatross,crow,duck,goose,pheasant,puffin,penguin,pigeon,raven
@@ -9,3 +11,4 @@ Insect:: ant,bug,butterfly,spider,worm
 Moneky:: ape,human,monkey
 Reptiles:: alligator,axolotl,lizard,seahorse
 Snake:: anaconda,cobra,long boy,snake
+Time:: beginning,end,void

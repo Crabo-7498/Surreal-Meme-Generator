@@ -1,1 +1,8 @@
-<W>:The, Nouns, LinkingVerbs, Adjectives::Article, Nouns
+// Comments are ignored
+// <!W> appends word followed by ::
+// <$CHAR> appends the CHAR after the $
+// <!S> appends a random word in a specified textClass
+// <?O> appends an optional word (50/50 chance)
+
+<!W>::The, Nouns, LinkingVerbs, <!S>::Article!::Adjectives, <?O>::Adjectives, Nouns
+Nouns, <$,>, <!W>::its the, <!S>::Time::Nouns

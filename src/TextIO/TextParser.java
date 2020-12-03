@@ -80,6 +80,7 @@ public class TextParser {
 
             // Iterates through each line of the file and adds the split lines;
             while((line = bReader.readLine()) != null) {
+                if(line.contains("!") || line.startsWith("//") || line.isEmpty()) continue;
                 textClasses.add(line.split(":: ")[0]);
             }
         } catch (IOException e) {
