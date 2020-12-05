@@ -44,9 +44,12 @@ public class TextParser {
         return randWord;
     }
 
+    final HashMap<String, List<String>> cachedParsedText = new HashMap<>();
+
     /**
      * Takes in a TextClass and type
-     * Reads the [type].list and appends it to an ArrayList
+     * Checks the cached text and if it exists, returns it
+     * Otherwise reads the [type].list and appends it to an ArrayList
      * Returns the filteredList as an ArrayList of Strings
      * @param textClass The class of an object, e.g. Furniture, Animal, Metal, etc.
      * @param type The type of the word, i.e. Noun, Verb or Name
@@ -56,6 +59,8 @@ public class TextParser {
     private List<String> ParseText(String textClass, String type) throws Exception {
         if(!availableTypes.contains(type)) throw new IllegalArgumentException("String type is not legal : Must be [Nouns], [Verbs] or [Name]");
 
+        if(cachedParsedText.containsKey(textClass + type)) return cachedParsedText.get(textClass + type);
+
         // Initialize Variables
         List<String> content = new ArrayList<>();
         bReader = new BufferedReader(new FileReader("Resources/Text/" + type + ".list"));
@@ -64,7 +69,9 @@ public class TextParser {
         // Iterates through each line, filters the one matching the textClass and returns it
         while((line = bReader.readLine()) != null) {
             if(!line.startsWith(textClass)) continue;
-            return Arrays.asList(line.split(textClass + ":: ")[1].split(","));
+            List<String> fLine = Arrays.asList(line.split(textClass + ":: ")[1].split(","));
+            cachedParsedText.put(textClass + type, fLine);
+            return fLine;
         }
         return null;
     }
