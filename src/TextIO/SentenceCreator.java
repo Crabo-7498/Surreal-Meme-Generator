@@ -42,11 +42,11 @@ public class SentenceCreator {
                 } else if(word.startsWith("<!S>::")) {
                     sentence.append(tParser.RandomWord(word.split("::")[1], word.split("::")[2]));
                 } else if(word.startsWith("<?O>")) {
-                    if(Math.random() > 0.5) sentence.append(tParser.RandomWord("None", word.split("::")[1]));
+                    if(new Random().nextFloat() > 0.5) sentence.append(tParser.RandomWord(null, word.split("::")[1]));
                 } else if(word.startsWith("<$")) {
                     sentence.deleteCharAt(sentence.length() - 1).append(word.charAt(2));
                 }else {
-                    sentence.append(tParser.RandomWord("None", word));
+                    sentence.append(tParser.RandomWord(null, word));
                 }
                 sentence.append(" ");
             }

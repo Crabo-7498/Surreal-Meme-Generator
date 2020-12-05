@@ -1,6 +1,7 @@
 package TextIO;
 
 import java.io.*;
+import java.util.Random;
 
 public class ConfigEditor {
     public void WriteConfig() {
@@ -11,10 +12,10 @@ public class ConfigEditor {
             String subject = tParser.RandomTextClass("Nouns");
 
             pr.write("Subject:: " + subject + "\n");
-            if(Math.random() > 0) {
+            if(new Random().nextFloat() > 0) {
                 pr.write("MVerb:: " + tParser.RandomWord(subject + "!", "Verbs"));
             } else {
-                pr.write("MVerb:: " + tParser.RandomWord("None", "Verbs"));
+                pr.write("MVerb:: " + tParser.RandomWord(null, "Verbs"));
             }
             pr.close();
         } catch (FileNotFoundException e) {
@@ -23,14 +24,15 @@ public class ConfigEditor {
     }
 
     public static String GetConfig(String config) {
-        String configLine = "None";
+        String configLine = null;
 
         try {
             BufferedReader br = new BufferedReader(new FileReader("Resources/Data/config.data"));
             String line;
 
             while((line = br.readLine()) != null) {
-                if(line.split(":: ")[0].equals(config)) configLine = line.split(":: ")[1];
+                String[] sLine = line.split(":: ");
+                if(sLine[0].equals(config)) configLine = sLine[1];
             }
         } catch (IOException e) {
             e.printStackTrace();
