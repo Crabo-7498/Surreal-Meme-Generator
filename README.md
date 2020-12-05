@@ -6,16 +6,17 @@ Project is yet to be finished
 
 ------------------------------------
 
-# Authors
-**[Crabo-7498](https://github.com/Crabo-7498) - Owner**
-
 # Installation
 - **TBD**
 
 # Use
-- **TBD**
+- Input: **TBD**
+- Output: **[Output Folder](https://github.com/Crabo-7498/Surreal-Meme-Generator/tree/main/Output) - as Export.png**
 
 # Contributing
 - **TBD**
+
+# Authors
+**[Crabo-7498](https://github.com/Crabo-7498) - Owner**
 
 
