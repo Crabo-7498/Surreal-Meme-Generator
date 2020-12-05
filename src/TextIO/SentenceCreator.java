@@ -13,7 +13,7 @@ import java.util.Random;
  * The sentences are generated word by words, each being either part of a textClass or random
  */
 public class SentenceCreator {
-    BufferedReader bReader;
+    BufferedReader bfdRead;
     final Random r = new Random();
 
     /**
@@ -64,11 +64,11 @@ public class SentenceCreator {
      */
     public String[] GetRandomSentenceStructure() throws IOException {
         ArrayList<String> wordStruct = new ArrayList<>();
-        bReader = new BufferedReader(new FileReader("Resources/Text/SentenceStructure.list"));
+        bfdRead = new BufferedReader(new FileReader("Resources/Text/SentenceStructure.list"));
         String line;
 
         // Iterate through the file
-        while((line = bReader.readLine()) != null) {
+        while((line = bfdRead.readLine()) != null) {
             if(line.startsWith("//") || line.isEmpty()) continue;
             wordStruct.add(line);
         }

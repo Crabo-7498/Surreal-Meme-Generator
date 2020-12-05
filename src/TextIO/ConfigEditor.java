@@ -8,16 +8,16 @@ public class ConfigEditor {
         TextParser tParser = new TextParser();
 
         try {
-            PrintWriter pr = new PrintWriter(new File("Resources/Data/config.data"));
+            PrintWriter prtWrite = new PrintWriter(new File("Resources/Data/config.data"));
             String subject = tParser.RandomTextClass("Nouns");
 
-            pr.write("Subject:: " + subject + "\n");
+            prtWrite.write("Subject:: " + subject + "\n");
             if(new Random().nextFloat() > 0) {
-                pr.write("MVerb:: " + tParser.RandomWord(subject + "!", "Verbs"));
+                prtWrite.write("MVerb:: " + tParser.RandomWord(subject + "!", "Verbs"));
             } else {
-                pr.write("MVerb:: " + tParser.RandomWord(null, "Verbs"));
+                prtWrite.write("MVerb:: " + tParser.RandomWord(null, "Verbs"));
             }
-            pr.close();
+            prtWrite.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -27,10 +27,10 @@ public class ConfigEditor {
         String configLine = null;
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("Resources/Data/config.data"));
+            BufferedReader bfdRead = new BufferedReader(new FileReader("Resources/Data/config.data"));
             String line;
 
-            while((line = br.readLine()) != null) {
+            while((line = bfdRead.readLine()) != null) {
                 String[] sLine = line.split(":: ");
                 if(sLine[0].equals(config)) configLine = sLine[1];
             }

@@ -11,8 +11,7 @@ import java.awt.image.BufferedImage;
 public class ImageEditor {
     private FontLoader fl = new FontLoader();
     private Graphics2D g2d = null;
-    private BufferedImage bg;
-    private ImageLoader imgLoad;
+    private final BufferedImage bg;
 
     public ImageEditor(BufferedImage bg) {
         this.bg = bg;
@@ -44,8 +43,7 @@ public class ImageEditor {
         g2d = bg.createGraphics();
 
         // Creates a new ImageLoader and FontLoader
-        imgLoad = new ImageLoader();
-
+        ImageLoader imgLoad = new ImageLoader();
 
         // Sets Graphics color to contrast the background
         g2d.setColor(imgLoad.GetDefaultImageColor(bg, position, new Tuple<Float, Float>((float) g2d.getFontMetrics().stringWidth(text), font.y)));

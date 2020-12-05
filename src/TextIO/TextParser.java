@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  */
 public class TextParser {
     final List<String> availableTypes = Arrays.asList("Nouns", "Verbs", "Adjectives", "Conjunctions", "LinkingVerbs");
-    BufferedReader bReader;
+    BufferedReader bfdRead;
     Random r = new Random();
 
     /**
@@ -32,11 +32,11 @@ public class TextParser {
         try {
             // Get a list of the parse dictionary words
             lValues = ParseText(textClass, type);
-            randWord = lValues.get(r.nextInt(lValues.size()));
+            if (lValues != null) randWord = lValues.get(r.nextInt(lValues.size()));
         } catch (Exception e) {
             try {
                 lValues = ParseText(RandomTextClass(type), type);
-                randWord = lValues.get(r.nextInt(lValues.size()));
+                if (lValues != null) randWord = lValues.get(r.nextInt(lValues.size()));
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -63,11 +63,11 @@ public class TextParser {
 
         // Initialize Variables
         List<String> content = new ArrayList<>();
-        bReader = new BufferedReader(new FileReader("Resources/Text/" + type + ".list"));
+        bfdRead = new BufferedReader(new FileReader("Resources/Text/" + type + ".list"));
         String line;
 
         // Iterates through each line, filters the one matching the textClass and returns it
-        while((line = bReader.readLine()) != null) {
+        while((line = bfdRead.readLine()) != null) {
             if(!line.startsWith(textClass)) continue;
             List<String> fLine = Arrays.asList(line.split(textClass + ":: ")[1].split(","));
             cachedParsedText.put(textClass + type, fLine);
@@ -87,19 +87,17 @@ public class TextParser {
         List<String> textClasses = new ArrayList<>();
 
         try {
-            bReader = new BufferedReader(new FileReader("Resources/Text/" + filetype + ".list"));
+            bfdRead = new BufferedReader(new FileReader("Resources/Text/" + filetype + ".list"));
             String line;
 
             // Iterates through each line of the file and adds the split lines;
-            while((line = bReader.readLine()) != null) {
+            while((line = bfdRead.readLine()) != null) {
                 if(line.isEmpty() || line.startsWith("//") || line.contains("!")) continue;
                 textClasses.add(line.split(":: ")[0]);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        //System.out.println(textClasses.toString());
 
         // Returns a random TextClass
         return textClasses.get(r.nextInt(textClasses.size()));

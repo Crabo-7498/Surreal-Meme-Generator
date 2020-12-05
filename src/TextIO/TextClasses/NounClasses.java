@@ -8,11 +8,5 @@ public enum NounClasses {
     Fish,
     Insect,
     Moneky,
-    Snake,
-    None
-
-    //Verbs
-    //Adjectives
-    //Conjunctions
-    //
+    Snake
 }
