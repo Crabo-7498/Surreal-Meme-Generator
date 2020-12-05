@@ -33,17 +33,22 @@ public class SentenceCreator {
 
             // Iterates through each of the structs
             for(String word : wordStruct) {
-                if(word.startsWith("<!W>::")) {
-                    sentence.append(word.split("::")[1] + " ");
+                if(word.equals("<Subject>")) {
+                    sentence.append(tParser.RandomWord(ConfigEditor.GetConfig("Subject"), "Nouns"));
+                } else if(word.equals("<MVerb>")) {
+                    sentence.append(ConfigEditor.GetConfig("MVerb"));
+                }else if(word.startsWith("<!W>::")) {
+                    sentence.append(word.split("::")[1]);
                 } else if(word.startsWith("<!S>::")) {
-                    sentence.append(tParser.RandomWord(word.split("::")[1], word.split("::")[2]) + " ");
+                    sentence.append(tParser.RandomWord(word.split("::")[1], word.split("::")[2]));
                 } else if(word.startsWith("<?O>")) {
-                    if(Math.random() > 0.5) sentence.append(tParser.RandomWord("None", word.split("::")[1]) + " ");
+                    if(Math.random() > 0.5) sentence.append(tParser.RandomWord("None", word.split("::")[1]));
                 } else if(word.startsWith("<$")) {
-                    sentence.deleteCharAt(sentence.length() - 1).append(word.charAt(2)).append(" ");
+                    sentence.deleteCharAt(sentence.length() - 1).append(word.charAt(2));
                 }else {
-                    sentence.append(tParser.RandomWord("None", word) + " ");
+                    sentence.append(tParser.RandomWord("None", word));
                 }
+                sentence.append(" ");
             }
         } catch (IOException e) {
             e.printStackTrace();

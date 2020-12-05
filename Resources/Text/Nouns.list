@@ -1,14 +1,13 @@
 // Comments are ignored
 
+Animals:: alpaca,antelope,bear,elephant,lion,tiger,wolf
 Body parts:: arm,foot,hand,heart,leg,kidney
 Fruits:: apple,banana,beans,brogle,orange,pineapple,vegetal
 Bird:: albatross,crow,duck,goose,pheasant,puffin,penguin,pigeon,raven
-Carnivorous:: bear,lion,tiger,wolf
 Crustacean:: crab,crayfish,lobster,longster,prawns,shrimp,
 Fish:: anchovies,anglerfish,cod,dolphin,eel,haddock,mackerel,octopus,salmon,shark,squid,tuna
-Herbivorous:: alpaca,antelope,elephant
 Insect:: ant,bug,butterfly,spider,worm
 Moneky:: ape,human,monkey
 Reptiles:: alligator,axolotl,lizard,seahorse
 Snake:: anaconda,cobra,long boy,snake
-Time:: beginning,end,void
+Time!:: beginning,end,void

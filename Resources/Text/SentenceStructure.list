@@ -3,6 +3,8 @@
 // <$CHAR> appends the CHAR after the $
 // <!S> appends a random word in a specified textClass
 // <?O> appends an optional word (50/50 chance)
+// TC! adds a word with TextClass TC, which cannot be randomly generated
 
-<!W>::The, Nouns, LinkingVerbs, <!S>::Article!::Adjectives, <?O>::Adjectives, Nouns
-Nouns, <$,>, <!W>::its the, <!S>::Time::Nouns
+<!W>::The, <Subject>, LinkingVerbs, <!S>::Article!::Adjectives, <?O>::Adjectives, Nouns
+<Subject>, <$,>, <!W>::its the, <!S>::Time!::Nouns
+<Subject>, <$,>, <!W>::it, LinkingVerbs, <MVerb>

@@ -1,6 +1,7 @@
 package Main;
 
 import ResourceIO.*;
+import TextIO.ConfigEditor;
 import TextIO.SentenceCreator;
 import TextIO.TextParser;
 import Util.Tuple;
@@ -15,12 +16,13 @@ public class Generator {
         SentenceCreator sCreate = new SentenceCreator();
 
         try {
+            ConfigEditor ce = new ConfigEditor();
+            ce.WriteConfig();
             imgEdit.AddImage(imgLoad.LoadImage("t2.jpg"), new Tuple<Integer, Integer>(500, 500), new Tuple<Integer, Integer>(10, 10));
             imgEdit.AddImage(imgLoad.LoadImage("t6.jpg"), new Tuple<Integer, Integer>(500, 500), new Tuple<Integer, Integer>(70, 70));
             imgEdit.AddText(bg, sCreate.CreateSentence(), new Tuple<String, Float>("mn.ttf", 60f), new Tuple<Integer, Integer>(100, 300));
-            imgEdit.AddText(bg, tParser.RandomWord("None", "Nouns"), new Tuple<String, Float>("mn.ttf", 1000f), new Tuple<Integer, Integer>(500, 700));
+            //imgEdit.AddText(bg, tParser.RandomWord("None", "Nouns"), new Tuple<String, Float>("mn.ttf", 1000f), new Tuple<Integer, Integer>(500, 700));
             imgLoad.SaveImage("Export.png", bg);
-
         } catch (Exception e) {
             e.printStackTrace();
         }

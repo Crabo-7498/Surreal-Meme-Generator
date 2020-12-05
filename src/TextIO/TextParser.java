@@ -35,7 +35,13 @@ public class TextParser {
             List<String> lValues = ParseText(textClass, type);
             randWord = lValues.get(new Random().nextInt(lValues.size()));
         } catch (Exception e) {
-            e.printStackTrace();
+            List<String> lValues = null;
+            try {
+                lValues = ParseText(RandomTextClass(type), type);
+                randWord = lValues.get(new Random().nextInt(lValues.size()));
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
         return randWord;
     }
@@ -71,7 +77,7 @@ public class TextParser {
      * @param filetype The type of file to search
      * @return Returns a String that is one of the textClasses in the filetype
      */
-    private String RandomTextClass(String filetype) {
+    public String RandomTextClass(String filetype) {
         ArrayList<String> textClasses = new ArrayList<>();
 
         try {

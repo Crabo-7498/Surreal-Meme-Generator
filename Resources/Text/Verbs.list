@@ -1,3 +1,4 @@
-Action:: beat,kick,punch,slap
-Movement:: move,run,teleport,walk
-
+Bird!:: is flying,flew
+Fish!:: is swimming,swam
+Movement:: moving,moved,teleporting,teleported,flying,flew,migrating,migrated
+Surreal:: succ,succed,is scronching,scronched
