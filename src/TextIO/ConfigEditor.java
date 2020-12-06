@@ -12,7 +12,7 @@ public class ConfigEditor {
             String subject = tParser.RandomTextClass("Nouns");
 
             prtWrite.write("Subject:: " + subject + "\n");
-            if(new Random().nextFloat() > 0) {
+            if (new Random().nextFloat() > 0) {
                 prtWrite.write("MVerb:: " + tParser.RandomWord(subject + "!", "Verbs"));
             } else {
                 prtWrite.write("MVerb:: " + tParser.RandomWord(null, "Verbs"));
@@ -30,9 +30,9 @@ public class ConfigEditor {
             BufferedReader bfdRead = new BufferedReader(new FileReader("Resources/Data/config.data"));
             String line;
 
-            while((line = bfdRead.readLine()) != null) {
+            while ((line = bfdRead.readLine()) != null) {
                 String[] sLine = line.split(":: ");
-                if(sLine[0].equals(config)) configLine = sLine[1];
+                if (sLine[0].equals(config)) configLine = sLine[1];
             }
         } catch (IOException e) {
             e.printStackTrace();

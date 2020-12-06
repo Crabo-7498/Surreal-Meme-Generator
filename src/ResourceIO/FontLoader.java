@@ -15,6 +15,7 @@ public class FontLoader {
      * Takes in a String name
      * Checks if the font already exists on cache and returns it
      * Otherwise create the fond and add it to cache
+     *
      * @param name The name of the font
      * @return The loaded font
      */
@@ -22,7 +23,7 @@ public class FontLoader {
         try {
 
             // Checks if the font is in cache
-            if(cachedFonts.get(name) == null) {
+            if (cachedFonts.get(name) == null) {
                 Font nFont = Font.createFont(Font.TRUETYPE_FONT, new File("Resources/Fonts/" + name));
                 cachedFonts.put(name, nFont);
                 return nFont;

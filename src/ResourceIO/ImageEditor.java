@@ -1,6 +1,7 @@
 package ResourceIO;
 
 import Util.Tuple;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -20,8 +21,9 @@ public class ImageEditor {
     /**
      * Takes in a new image, size and position
      * Draws the new image to the base image
-     * @param image - The new image to be drawn
-     * @param size - The size of the new image
+     *
+     * @param image    - The new image to be drawn
+     * @param size     - The size of the new image
      * @param position - The position of the new image
      */
     public void AddImage(BufferedImage image, Tuple<Integer, Integer> size, Tuple<Integer, Integer> position) {
@@ -34,9 +36,10 @@ public class ImageEditor {
      * Takes in a String and Position
      * Sets color to contrast background
      * Draws text to the base image
-     * @param bg The background image
-     * @param text The Text to be drawn
-     * @param font The Font to be used
+     *
+     * @param bg       The background image
+     * @param text     The Text to be drawn
+     * @param font     The Font to be used
      * @param position The position of where the text will be drawn
      */
     public void AddText(BufferedImage bg, String text, Tuple<String, Float> font, Tuple<Integer, Integer> position) {
@@ -57,17 +60,18 @@ public class ImageEditor {
      * Takes in text and boundary config
      * Resizes text to fit within boundary
      * Draws the text to base image
-     * @param text The text to be added
-     * @param padding The padding (width * 2) of the boundary
+     *
+     * @param text        The text to be added
+     * @param padding     The padding (width * 2) of the boundary
      * @param currentSize The current/default size of the font
-     * @param position The position of where the text should be drawn
-     * @param font The font of the text
+     * @param position    The position of where the text should be drawn
+     * @param font        The font of the text
      */
     private void DrawStringWithResizedText(String text, int padding, float currentSize, Tuple<Integer, Integer> position, Font font) {
         g2d.setFont(font.deriveFont(currentSize));
 
         // Loops though sizes until text fits horizontally
-        while(g2d.getFontMetrics().stringWidth(text) + position.x > bg.getWidth() - (padding * 2)) {
+        while (g2d.getFontMetrics().stringWidth(text) + position.x > bg.getWidth() - (padding * 2)) {
             currentSize -= currentSize / 5;
             g2d.setFont(font.deriveFont(currentSize));
         }

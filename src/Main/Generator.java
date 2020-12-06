@@ -1,10 +1,12 @@
 package Main;
 
-import ResourceIO.*;
+import ResourceIO.ImageEditor;
+import ResourceIO.ImageLoader;
 import TextIO.ConfigEditor;
 import TextIO.SentenceCreator;
 import TextIO.TextParser;
 import Util.Tuple;
+
 import java.awt.image.BufferedImage;
 
 public class Generator {
