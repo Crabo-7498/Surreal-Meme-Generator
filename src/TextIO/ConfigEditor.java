@@ -23,7 +23,7 @@ public class ConfigEditor {
         }
     }
 
-    public static String GetConfig(String config) {
+    public String GetConfig(String config) {
         String configLine = null;
 
         try {

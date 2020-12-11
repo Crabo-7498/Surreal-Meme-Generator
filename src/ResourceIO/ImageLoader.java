@@ -1,35 +1,48 @@
 package ResourceIO;
 
+import TextIO.ConfigEditor;
 import Util.ColorIO;
 import Util.Tuple;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The ImageLoader class loads and saves images as well as other utility methods
  */
 public class ImageLoader {
 
+    private final Map<String, BufferedImage> cachedImages = new HashMap<>();
+
     /**
-     * Takes in a filename and loads that file through the Resources path
+     * Takes in a filename and loads that file through Cache or the Resources Path
      *
      * @param name The name of the file
      * @return Returns a BufferedImage
      */
     public BufferedImage LoadImage(String name) {
-        BufferedImage loadedImage = null;
         try {
 
-            //Load image from /Resources/Images/
-            loadedImage = ImageIO.read(new File("Resources/Images/Test" + name));
+            if(cachedImages.get(name) == null) {
+                // Load image from /Resources/Images/
+                BufferedImage loadedImage = ImageIO.read(new File("Resources/Images/Test" + name));
+
+                cachedImages.put(name, loadedImage);
+                return loadedImage;
+            }
+
+            // Return the cached image
+            return cachedImages.get(name);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return loadedImage;
+        return null;
     }
 
     /**
