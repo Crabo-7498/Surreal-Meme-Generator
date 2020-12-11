@@ -22,8 +22,9 @@ public class SentenceCreator {
      * @return Returns a String that is the sentence
      */
     public String CreateSentence() {
-        TextParser tParser = new TextParser();
+        TextParser txtParser = new TextParser();
         StringBuilder sentence = new StringBuilder();
+        ConfigEditor cfgEditor = new ConfigEditor();
 
         try {
 
@@ -33,19 +34,19 @@ public class SentenceCreator {
             // Iterates through each of the structs
             for (String word : wordStruct) {
                 if (word.equals("<Subject>")) {
-                    sentence.append(tParser.RandomWord(ConfigEditor.GetConfig("Subject"), "Nouns"));
+                    sentence.append(txtParser.RandomWord(cfgEditor.GetConfig("Subject"), "Nouns"));
                 } else if (word.equals("<MVerb>")) {
-                    sentence.append(ConfigEditor.GetConfig("MVerb"));
+                    sentence.append(cfgEditor.GetConfig("MVerb"));
                 } else if (word.startsWith("<!W>::")) {
                     sentence.append(word.split("::")[1]);
                 } else if (word.startsWith("<!S>::")) {
-                    sentence.append(tParser.RandomWord(word.split("::")[1], word.split("::")[2]));
+                    sentence.append(txtParser.RandomWord(word.split("::")[1], word.split("::")[2]));
                 } else if (word.startsWith("<?O>")) {
-                    if (new Random().nextFloat() > 0.5) sentence.append(tParser.RandomWord(null, word.split("::")[1]));
+                    if (new Random().nextFloat() > 0.5) sentence.append(txtParser.RandomWord(null, word.split("::")[1]));
                 } else if (word.startsWith("<$")) {
                     sentence.deleteCharAt(sentence.length() - 1).append(word.charAt(2));
                 } else {
-                    sentence.append(tParser.RandomWord(null, word));
+                    sentence.append(txtParser.RandomWord(null, word));
                 }
                 sentence.append(" ");
             }

@@ -1,5 +1,6 @@
 package ResourceIO;
 
+import Util.ColorIO;
 import Util.Tuple;
 
 import java.awt.*;
@@ -10,7 +11,7 @@ import java.awt.image.BufferedImage;
  * Each method creates and disposes of a graphics component attached to the base image
  */
 public class ImageEditor {
-    private FontLoader fl = new FontLoader();
+    private FontLoader fntLoader = new FontLoader();
     private Graphics2D g2d = null;
     private final BufferedImage bg;
 
@@ -46,11 +47,11 @@ public class ImageEditor {
         g2d = bg.createGraphics();
 
         // Creates a new ImageLoader and FontLoader
-        ImageLoader imgLoad = new ImageLoader();
+        ColorIO cl = new ColorIO();
 
         // Sets Graphics color to contrast the background
-        g2d.setColor(imgLoad.GetDefaultImageColor(bg, position, new Tuple<Float, Float>((float) g2d.getFontMetrics().stringWidth(text), font.y)));
-        DrawStringWithResizedText(text, bg.getWidth() / 10, font.y, position, fl.LoadFont(font.x));
+        g2d.setColor(cl.GetDefaultImageColor(bg, position, new Tuple<Float, Float>((float) g2d.getFontMetrics().stringWidth(text), font.y)));
+        DrawStringWithResizedText(text, bg.getWidth() / 10, font.y, position, fntLoader.LoadFont(font.x));
 
         // Dispose of the Graphics
         g2d.dispose();
