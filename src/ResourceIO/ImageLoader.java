@@ -25,7 +25,7 @@ public class ImageLoader {
         try {
 
             //Load image from /Resources/Images/
-            loadedImage = ImageIO.read(new File("Resources/Images/" + name));
+            loadedImage = ImageIO.read(new File("Resources/Images/Test" + name));
         } catch (IOException e) {
             e.printStackTrace();
         }
