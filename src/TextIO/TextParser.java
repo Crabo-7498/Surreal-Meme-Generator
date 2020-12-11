@@ -1,6 +1,7 @@
 package TextIO;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -99,5 +100,18 @@ public class TextParser {
 
         // Returns a random TextClass
         return textClasses.get(r.nextInt(textClasses.size()));
+    }
+
+    public String GetTextClass(String word, String type) throws Exception {
+        if (!availableTypes.contains(type))
+            throw new IllegalArgumentException("String type is not legal : Must be [Nouns], [Verbs] or [Name]");
+
+        BufferedReader bfdRead = new BufferedReader(new FileReader("Resources/Text/" + type + ".list"));
+
+        // Iterates through each line, filters the one matching the textClass and returns it
+        String line;
+        while ((line = bfdRead.readLine()) != null)
+            if (line.contains(word)) return line.split(":: ")[0];
+        return null;
     }
 }

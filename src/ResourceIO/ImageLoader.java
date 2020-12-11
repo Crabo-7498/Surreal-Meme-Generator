@@ -1,6 +1,7 @@
 package ResourceIO;
 
 import TextIO.ConfigEditor;
+import TextIO.TextParser;
 import Util.ColorIO;
 import Util.Tuple;
 
@@ -31,7 +32,7 @@ public class ImageLoader {
 
             if(cachedImages.get(name) == null) {
                 // Load image from /Resources/Images/
-                BufferedImage loadedImage = ImageIO.read(new File("Resources/Images/Test" + name));
+                BufferedImage loadedImage = ImageIO.read(new File("Resources/Images/" + name));
 
                 cachedImages.put(name, loadedImage);
                 return loadedImage;
@@ -80,5 +81,22 @@ public class ImageLoader {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public BufferedImage RandomImage() {
+        // THIS METHOD DOES NOT WORK YET AS THE IMAGES HAVE NOT BEEN IMPLEMENTED
+
+        ConfigEditor cfgEditor = new ConfigEditor();
+        TextParser txtParser = new TextParser();
+        ImageLoader imgLoader = this;
+        String subject = cfgEditor.GetConfig("Subject");
+
+        try {
+            return imgLoader.LoadImage(txtParser.GetTextClass(subject, "Nouns") + "/" + subject);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
