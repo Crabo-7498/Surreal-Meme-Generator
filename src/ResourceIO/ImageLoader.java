@@ -60,9 +60,15 @@ public class ImageLoader {
         }
     }
 
+    /**
+     * Generates Random Image based on the current Subject
+     *
+     * @return Return a randomly generated BufferedImage
+     */
     public BufferedImage RandomImage() {
         // THIS METHOD DOES NOT WORK YET AS THE IMAGES HAVE NOT BEEN IMPLEMENTED
 
+        // Initialize variables
         ConfigEditor cfgEditor = new ConfigEditor();
         TextParser txtParser = new TextParser();
         ImageLoader imgLoader = this;
@@ -73,7 +79,6 @@ public class ImageLoader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return null;
     }
 }

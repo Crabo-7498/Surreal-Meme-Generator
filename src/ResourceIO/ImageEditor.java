@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
  * Each method creates and disposes of a graphics component attached to the base image
  */
 public class ImageEditor {
-    private FontLoader fntLoader = new FontLoader();
+    private final FontLoader fntLoader = new FontLoader();
     private Graphics2D g2d = null;
     private final BufferedImage bg;
 
