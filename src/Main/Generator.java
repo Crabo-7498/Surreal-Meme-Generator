@@ -1,5 +1,6 @@
 package Main;
 
+import ResourceIO.FileIO;
 import ResourceIO.ImageEditor;
 import ResourceIO.ImageLoader;
 import TextIO.ConfigEditor;
@@ -18,13 +19,16 @@ public class Generator {
         SentenceCreator stnCreate = new SentenceCreator();
 
         try {
-            ConfigEditor ce = new ConfigEditor();
-            ce.WriteConfig();
-            imgEdit.AddImage(imgLoad.LoadImage("Test/t2.jpg"), new Tuple<Integer, Integer>(500, 500), new Tuple<Integer, Integer>(10, 10));
-            imgEdit.AddImage(imgLoad.LoadImage("Test/t6.jpg"), new Tuple<Integer, Integer>(500, 500), new Tuple<Integer, Integer>(70, 70));
-            imgEdit.AddText(bg, stnCreate.CreateSentence(), new Tuple<String, Float>("mn.ttf", 60f), new Tuple<Integer, Integer>(100, 300));
+            ConfigEditor cfgEditor = new ConfigEditor();
+            FileIO fIO = new FileIO();
+            cfgEditor.WriteConfig();
+
+            System.out.println(fIO.GetRandomFile("Resources/Images/Surreal"));
+            //imgEdit.AddImage(imgLoad.LoadImage("Test/t2.jpg"), new Tuple<Integer, Integer>(500, 500), new Tuple<Integer, Integer>(10, 10));
+            //imgEdit.AddImage(imgLoad.LoadImage("Test/t6.jpg"), new Tuple<Integer, Integer>(500, 500), new Tuple<Integer, Integer>(70, 70));
+            //imgEdit.AddText(bg, stnCreate.CreateSentence(), new Tuple<String, Float>("mn.ttf", 60f), new Tuple<Integer, Integer>(100, 300));
             //imgEdit.AddText(bg, txtParser.RandomWord(null, "Nouns"), new Tuple<String, Float>("mn.ttf", 1000f), new Tuple<Integer, Integer>(500, 700));
-            imgLoad.SaveImage("Export.png", bg);
+            //imgLoad.SaveImage("Export.png", bg);
         } catch (Exception e) {
             e.printStackTrace();
         }
