@@ -29,6 +29,7 @@ public class FileIO {
      */
     public List<String> GetAllFiles(String path) {
         File folder = new File(path);
+        ArrayList<String> files = new ArrayList<>();
 
         // Returns an Mapped Stream
         return Arrays.stream(Objects.requireNonNull(folder.listFiles(filter))).map(c -> {
