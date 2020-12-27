@@ -2,7 +2,7 @@ Surreal Meme Generator
 ====================================
 
 Generating the funne surreals<br>
-Project is yet to be finished
+Project is on hold and will be continued later
 
 ------------------------------------
 
